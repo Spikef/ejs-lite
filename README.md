@@ -368,10 +368,10 @@ var list = [
 
 在json循环内部, 可以使用如下几个内部变量:
 
-  - $array:    被循环的数组本身
-  - $key:       当前循环的主键
+  - $json:     被循环的json本身
+  - $key:      当前循环的主键
   - $value:    当前循环的值
-  - $length:   数组元素个数
+  - $length:   json对象一级元素的个数
 
 examples:
 
