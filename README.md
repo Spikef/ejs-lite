@@ -172,7 +172,7 @@ var delimiters = {
     shift: '#'    // the shift mark is used for equal, so define another
 }
 
-ejs.render('index', {users: users}, {delimiters: delimiters});
+ejs.render('index', {delimiters: delimiters}, {users: users});
 // => 'geddy | neil | alex'
 ```
 
