@@ -1,0 +1,12 @@
+{
+  "name": "ejs-lite",
+  "description": "修改自ejs的模板引擎，使用更简单。",
+  "keywords": [
+    "template",
+    "engine",
+    "ejs"
+  ],
+  "version": "1.0.1",
+  "author": "Spikef",
+  "main": "./lib/ejs.js"
+}
