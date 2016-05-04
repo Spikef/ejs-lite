@@ -48,7 +48,7 @@ http.createServer(function(req, res) {
         }
     };
 
-    var file = path.resolve(__dirname, 'templates/index.ejs');
+    var file = path.resolve(__dirname, 'templates/index2.ejs');
     var options = {
         filename: file,
         delimiters: {

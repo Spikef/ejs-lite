@@ -42,9 +42,7 @@ $ npm install ejs-lite
   * 支持 [NodeAsp](http://nodeasp.com) 引擎
   * Support [NodeAsp](http://nodeasp.com) engine
   * 删除了对 `<%_ _%>` 标签的支持
-  * 删除了对 `<%#` 标签的支持
   * Removed the `<%_ _%>` tag
-  * Removed the `<%#` tag
   * 删除了 `client/strict/_with/rmWhitespace` 等选项
   * Removed the `client/strict/_with/rmWhitespace` options
   * 删除的特殊也许会在足够的测试之后重新添加回来
@@ -105,6 +103,7 @@ ejs.render(options, data);
     - `delimiters.loops`  `~`
     - `delimiters.check`  `?`
     - `delimiters.shift`  `:`
+    - `delimiters.notes`  `#`
 
 ## Tags
 
@@ -114,6 +113,8 @@ ejs.render(options, data);
   - `<%=`                 Outputs the unescaped value into the template
   - `<%-`                 输出转义HTML标签之后的文本
   - `<%-`                 Outputs the value into the template (HTML escaped)
+  - `<%#`                 注释标签, 不执行, 也不输出任何内容
+  - `<%#`                 Comment tag, no execution, no output
   - `<%~`                 对数组或者json进行循环, 不输出
   - `<%~`                 Loops for array or json, no output
   - `<%?`                 生成if/else/else if代码块, 不输出
