@@ -55,14 +55,16 @@ http.createServer(function(req, res) {
             begin: '{{',
             close: '}}'
         },
-        cache: false
+        cache: false,
+        useWith: false,
+        localsName: 'data'
     };
 
     var ejs = require('ejs-lite');
-    var html = ejs.render(file, options, data);
+    var html = ejs.render(data, options);
 
     //var ejs = require('ejs');
-    //var html = ejs.render(file, data, options);
+    //var html = ejs.render(data, options);
 
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(html);

@@ -72,7 +72,7 @@ var template = ejs.compile(str, options);
 template(data);
 // => Rendered HTML string
 
-ejs.render(path, options, data);
+ejs.render(path, data, options);
 // => Rendered HTML string
 
 options.filename = path;
@@ -92,6 +92,10 @@ ejs.render(options, data);
   - `context`             Function execution context, defaults to `null`
   - `debug`               是否开启模板调试, 开启之后会在发生错误时指出错误的行号, 默认为true
   - `debug`               When `false` no debug instrumentation is compiled,  defaults to `true`
+  - `useWith`             是否使用`with() {}`, 如果设置为false则所有数据都存储在locals对象上, 默认为true
+  - `useWith`             Whether or not to use `with() {}` constructs. If false then the locals will be stored in the locals object, defaults to `true`
+  - `localsName`          当不使用`with`时, 变量存储对象的对象名称, 默认为`locals`
+  - `localsName`          Name to use for the object storing local variables when not using with Defaults to locals
   - `delimiters`          所有界定标签所使用的符号, 详见下面的 `Tags` 章节
   - `delimiters`          Characters to use for delimiter tags, see `Tags` below
     - `delimiters.begin`  `<%`
@@ -307,6 +311,16 @@ var list = [
     </li>
 <%~</ul>%>
 
+// when useWith === false, use following instead:
+<%~list <ul>
+    <div class="header">header</div>%>
+    <li id="out_<%=$index+1%>">
+        <%~$value.a <ul>%>
+            <li id="in_<%=$index+1%>"><%=$value.val%></li>
+        <%~%>
+    </li>
+<%~</ul>%>
+
 // =>
 <ul>
     <div class="header">header</div>
@@ -413,6 +427,16 @@ var list = {
     <li id="<%=$key%>">
         <%~~$value <ul>%>
             <li id="<%=text%>"><%=value%></li>
+        <%~%>
+    </li>
+<%~</ul>%>
+
+// when useWith === false, use following instead:
+<%~~locals.list <ul>
+    <div class="header">header</div>%>
+    <li id="<%=$key%>">
+        <%~~$value <ul>%>
+            <li id="<%=$json.text%>"><%=$json.value%></li>
         <%~%>
     </li>
 <%~</ul>%>

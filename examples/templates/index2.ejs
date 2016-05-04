@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎访问</title>
+</head>
+<body>
+{{
+    var a = function() {
+        return "100";
+    }
+}}
+<div style="text-align: center">
+    {{include sub.ejs}}, {{=data.welcome}}!
+</div>
+<div style="text-align: center">
+    {{-include('sub.ejs')}}, {{=data.welcome}}!
+</div>
+<div style="text-align: center">
+    访问 {{=a()}}!
+</div>
+<div style="text-align: center">
+    输出原始标签{{{=100}}
+</div>
+<div>
+    {{var n = 200;}}
+    {{?n && n>300}}<p>大于300</p>
+    {{??n<100}}<p>小于100</p>
+    {{??}}<p>介于100和300之间</p>
+    {{?}}
+</div>
+<div>
+    {{var m = 200;}}
+    {{:m}}
+    {{::100}}<p>等于100</p>
+    {{::200, "200"}}<p>等于200</p>
+    {{::}}<p>不等于100也不等于200</p>
+    {{:}}
+</div>
+<ul>
+    {{~data.list1}}
+    <li id="out_{{=$index+1}}">
+        <ul>
+            {{~$value.a}}
+            <li id="in_{{=$index+1}}">{{=$value.val}}</li>
+            {{~}}
+        </ul>
+    </li>
+    {{~}}
+</ul>
+<ul>
+    {{~data.list2}}
+    <li id="out_{{=$index+1}}">
+        {{~$value <ul>}}
+            <li id="in_{{=$index+1}}">{{=$value}}</li>{{~
+        </ul>}}
+    </li>
+    {{~}}
+</ul>
+<ul>
+    {{~~data.list3}}
+    <li id="{{=$key}}">{{=$value}}</li>
+    {{~}}
+</ul>
+<ul>
+    {{~~data.list4}}
+    <li id="{{=$key}}">
+        {{~~$value <ul>}}
+            <li id="{{=$json.text}}">{{=$json.value}}</li>
+        {{~}}
+    </li>
+    {{~}}
+</ul>
+</body>
+</html>
