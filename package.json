@@ -6,7 +6,7 @@
     "engine",
     "ejs"
   ],
-  "version": "1.0.3",
+  "version": "1.0.6",
   "author": "Spikef",
   "main": "./lib/ejs.js"
 }
